@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', (event) =>{
 
 let list_tasks = [];
 // ajoute des tâches //
-function add_task (titre, description) {
+function add_task(titre, description) {
     const task = { 
         id: Date.now(),
         titre : titre,
@@ -32,6 +32,16 @@ function add_task (titre, description) {
       <h3>${task.titre}</h3>
       <p>${task.description}</p>
   `;
-    document.getElementById('tasksContainer').appendChild(addElement);
+
+    const delete_button = document.createElement('button');
+    delete_button.textContent = 'Supprimer';
+    delete_button.addEventListener('click',function(){
+        addElement.remove();
+        console.log(`Tâche suprimée : ${titre}`);
+    });
+    
+    addElement.appendChild(delete_button);
+    tasks_container.appendChild(addElement);
+
    console.log(`Tâche ajoutée : ${titre}`);
 }
