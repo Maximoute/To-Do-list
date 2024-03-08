@@ -1,0 +1,6 @@
+- Ajouter des tâches,
+- Lire des tâches,
+- Supprimer des tâches,
+- Modifier des tâches,
+- Réoganiser des tâches,
+- Marquer une tâche comme terminé.
