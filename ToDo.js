@@ -6,9 +6,12 @@ document.addEventListener('DOMContentLoaded', (event) =>{
     document.getElementById('taskForm').addEventListener('submit', function(e){
         e.preventDefault();
 
-        const titre = document.getElementById('taskTitle').value;
-        const description = document.getElementById('taskDescription').value;
-
+        const titre = document.getElementById('taskTitle').value.trim();
+        const description = document.getElementById('taskDescription').value.trim();
+        if (!titre){
+            alert("Veuillez remplir le titre de la tâche");
+            return;
+        }
         add_task(titre, description);
 
         this.reset();
@@ -28,20 +31,43 @@ function add_task(titre, description) {
    // crée une div dans l'html
     const addElement = document.createElement('div');
     addElement.setAttribute(`id`,`task-${task.id}`);
-    addElement.innerHTML = `
-      <h3>${task.titre}</h3>
-      <p>${task.description}</p>
-  `;
+
+    const titre_element = document.createElement('h3');
+    titre_element.textContent = task.titre;
+    addElement.appendChild(titre_element);
+
+    const description_element = document.createElement('p');
+    description_element.textContent = task.description;
+    addElement.appendChild(description_element);
 
     const delete_button = document.createElement('button');
     delete_button.textContent = 'Supprimer';
     delete_button.addEventListener('click',function(){
         addElement.remove();
-        console.log(`Tâche suprimée : ${titre}`);
+        console.log(`Tâche suprimée : ${titre.textContent}`);
+    });
+
+    const modifie_button = document.createElement('Button');
+    modifie_button.textContent = 'modifier';
+    modifie_button.addEventListener('click', function(){
+        modifie_task(titre_element, description_element);
     });
     
+    addElement.appendChild(modifie_button);
     addElement.appendChild(delete_button);
     tasks_container.appendChild(addElement);
 
    console.log(`Tâche ajoutée : ${titre}`);
+}
+
+function modifie_task(titre_element, description_element){
+    const new_title = prompt("Nouveau titre :", titre_element.textContent);
+    if (new_title !== null && new_title.trim() !== ''){
+        titre_element.textContent = new_title.trim();
+    }
+
+    const new_description = prompt("Nouvelle description :", description_element.textContent);
+        if (new_description !== null && new_description.trim() !== ''){
+            description_element.textContent = new_description.trim();
+        }
 }
