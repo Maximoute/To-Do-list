@@ -62,13 +62,16 @@ function add_task(titre, description) {
 
     const titre_element = document.createElement('h3');
     titre_element.textContent = task.titre;
+    titre_element.classList.add('task-title');
     div_task.appendChild(titre_element);
 
     const description_element = document.createElement('p');
     description_element.textContent = task.description;
+    description_element.classList.add('task-description');
     div_task.appendChild(description_element);
 
     const delete_button = document.createElement('button');
+    delete_button.classList.add('delete-button');
     delete_button.textContent = 'Supprimer';
     delete_button.addEventListener('click',function(){
         div_task.remove();
@@ -76,6 +79,7 @@ function add_task(titre, description) {
     });
 
     const modifie_button = document.createElement('Button');
+    modifie_button.classList.add('edit-button');
     modifie_button.textContent = 'modifier';
     modifie_button.addEventListener('click', function(){
         modifie_task(titre_element, description_element);
@@ -95,8 +99,12 @@ function add_task(titre, description) {
     return task_id;
  */
 function modifie_task(titre_element, description_element){
+
+    toggleAllEditDeleteButtons(false); // appel la fonction
+
     const modifie_form = document.createElement('div');
     modifie_form.innerHTML = `
+        <h3>Editez la tâche</h3>
         <div> 
             <label for="modifie-titre">Titre :</label>
             <input type="text" id="modifie-titre" value="${titre_element.textContent}">
@@ -113,14 +121,17 @@ function modifie_task(titre_element, description_element){
         tasks_container.innerHTML = '';
         tasks_container.appendChild(modifie_form);
 
+
         const delete_button = document.createElement('button');
+            delete_button.classList.add('delete-button');
             delete_button.textContent = 'Supprimer';
             delete_button.addEventListener('click',function(){
                 tasks_container.remove();
             console.log(`Tâche suprimée : ${titre_element.textContent}`);
         });
 
-        const modifie_button = document.createElement('Button');
+        const modifie_button = document.createElement('button');
+            modifie_button.classList.add('edit-button');
             modifie_button.textContent = 'modifier';
             modifie_button.addEventListener('click', function(){
             modifie_task(titre_element, description_element);
@@ -143,6 +154,7 @@ function modifie_task(titre_element, description_element){
                 tasks_container.appendChild(modifie_button);
                 tasks_container.appendChild(delete_button);
                 modifie_form.remove();
+                toggleAllEditDeleteButtons(true);
 
                 console.log(`Tâche modifiée : ${new_title}`);
                 
@@ -157,7 +169,60 @@ function modifie_task(titre_element, description_element){
             tasks_container.appendChild(modifie_button);
             tasks_container.appendChild(delete_button);
             modifie_form.remove();
+            toggleAllEditDeleteButtons(true);
         })
 
 
     }
+
+function toggleAllEditDeleteButtons(enable) {
+    const all_edit_buttons = document.querySelectorAll('.edit-button'); // c'est pas des ID c'est des class !
+    const all_delete_buttons = document.querySelectorAll('.delete-button');
+    const add_task_form_button = document.querySelectorAll('.add-task-form');
+    const all_task_title = document.querySelectorAll('.task-title');
+    const all_tast_description = document.querySelectorAll('.task-description')
+    
+    all_edit_buttons.forEach(button => {
+
+        if (enable) {
+            button.style.display = '';
+        } else {
+            button.style.display = 'none';
+        }
+    })
+
+    all_delete_buttons.forEach(button => {
+        if (enable) {
+            button.style.display = '';
+        } else {
+            button.style.display = 'none';
+        }
+    })
+
+    add_task_form_button.forEach(button => {
+
+        if (enable) {
+            button.style.display = '';
+        } else {
+            button.style.display = 'none';
+        }
+    })
+
+    all_task_title.forEach(h3 => {
+
+        if (enable) {
+            h3.style.display = '';
+        } else {
+            h3.style.display = 'none';
+        }
+    })
+
+    all_tast_description.forEach(p => {
+
+        if (enable) {
+            p.style.display = '';
+        } else {
+            p.style.display = 'none';
+        }
+    })
+}
