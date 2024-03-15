@@ -1,24 +1,51 @@
 "use strict"
 
+let list_tasks = [];
+
+
 document.addEventListener('DOMContentLoaded', (event) =>{
 
-
-    document.getElementById('taskForm').addEventListener('submit', function(e){
+    document.getElementById('add-task-form').addEventListener('click',function(e){
         e.preventDefault();
-
-        const titre = document.getElementById('taskTitle').value.trim();
-        const description = document.getElementById('taskDescription').value.trim();
-        if (!titre){
-            alert("Veuillez remplir le titre de la tâche");
-            return;
-        }
-        add_task(titre, description);
-
-        this.reset();
-    });
+        show_add_task_form();
+    })
 });
 
-let list_tasks = [];
+function show_add_task_form () {
+    const button_add_task_form = document.getElementById('add-task-form');
+    const form_container = document.getElementById("form-container");
+    form_container.innerHTML = '';
+
+    if (!document.getElementById("task-form")) {
+    const add_form = document.createElement('form');
+    add_form.id ="task-form";
+    add_form.innerHTML =`
+            <input type="text" id="task-title" placeholder="Titre"><br>
+            <textarea  id="task-description" cols="20" rows="10" placeholder="Description"></textarea><br>
+            <button type="submit">Ajouter</button>
+        `;
+        form_container.appendChild(add_form);
+
+        add_form.addEventListener('submit',function(e){
+            e.preventDefault();
+            const titre = document.getElementById('task-title').value.trim();
+            const description = document.getElementById('task-description').value.trim();
+            if (!titre){
+                alert("Veuillez remplir le titre de la tâche");
+                return;
+            }
+    
+            add_task(titre, description);
+            form_container.innerHTML = '';
+            document.getElementById('add-task-form').style.display = 'inline-block';
+            add_form.reset();
+            add_form.remove();
+    });  
+    
+    }
+    button_add_task_form.style.display = 'none';
+}
+    
 // ajoute des tâches //
 function add_task(titre, description) {
     const task = { 
@@ -29,6 +56,7 @@ function add_task(titre, description) {
     };
     list_tasks.push(task); // où ? -> quoi ? //
    // crée une div dans l'html
+   
     const div_task = document.createElement('div');
     div_task.setAttribute(`id`,`task-${task.id}`);
 
@@ -52,10 +80,13 @@ function add_task(titre, description) {
     modifie_button.addEventListener('click', function(){
         modifie_task(titre_element, description_element);
     });
+
     
     div_task.appendChild(modifie_button);
     div_task.appendChild(delete_button);
-    tasks_container.appendChild(div_task);
+
+    document.getElementById('tasks-container').appendChild(div_task);
+    
 
    console.log(`Tâche ajoutée : ${titre}`);
 }
