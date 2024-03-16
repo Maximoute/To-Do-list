@@ -107,7 +107,7 @@ function add_task(titre, description) {
  */
 function modifie_task(titre_element, description_element){
 
-    toggleAllEditDeleteButtons(false); // appel la fonction
+    HideSections(false); // appel la fonction
 
     const modifie_form = document.createElement('div');
     modifie_form.innerHTML = `
@@ -150,40 +150,32 @@ function modifie_task(titre_element, description_element){
                 titre_element.textContent = new_title;
                 description_element.textContent = new_description
 
-                form_container.innerHTML = '';
-                toggleAllEditDeleteButtons(true);
-
+                cleaUpAndRestore()
                 console.log(`Tâche modifiée : ${new_title}`);
                 
             
         }});
 
         document.getElementById('cancel-modification').addEventListener('click',function(){
-            form_container.innerHTML = '';
-            toggleAllEditDeleteButtons(true);
+            cleaUpAndRestore()
         })
 
 
     }
 
-function toggleAllEditDeleteButtons(enable) {
+function HideSections(enable) {
+
+    // HideSections(true) -> show
+    // HideSections(false) -> hide
 
     const section_add_task = document.querySelectorAll('.add-task');
     const section_tasks = document.querySelectorAll('.tasks');
 
     section_add_task.forEach(section => {
-        if(enable) {
-            section.style.display = '';
-        } else {
-            section.style.display = 'none';
-        }
-    })
+        section.style.display = enable ? '' : 'none';
+    });
     section_tasks.forEach(section => {
-        if(enable) {
-            section.style.display = '';
-        } else {
-            section.style.display = 'none';
-        }
+        section.style.display = enable ? '' : 'none';
     })
 }
 
@@ -195,4 +187,9 @@ function taskDone(titre, description, is_checked){
         titre.classList.remove('text-line-through');
         description.classList.remove('text-line-through');
     }
+}
+
+function cleaUpAndRestore() {
+    document.getElementById('form-container').innerHTML = '';
+    HideSections(true)
 }
