@@ -60,6 +60,13 @@ function add_task(titre, description) {
     const div_task = document.createElement('div');
     div_task.setAttribute(`id`,`task-${task.id}`);
 
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.addEventListener('click', function(){
+        taskDone(titre_element, description_element, checkbox.checked);
+    })
+    div_task.appendChild(checkbox);
+
     const titre_element = document.createElement('h3');
     titre_element.textContent = task.titre;
     titre_element.classList.add('task-title');
@@ -225,4 +232,14 @@ function toggleAllEditDeleteButtons(enable) {
             p.style.display = 'none';
         }
     })
+}
+
+function taskDone(titre, description, is_checked){
+    if (is_checked) {
+        titre.classList.add('text-line-through');
+        description.classList.add('text-line-through');
+    } else {
+        titre.classList.remove('text-line-through');
+        description.classList.remove('text-line-through');
+    }
 }
