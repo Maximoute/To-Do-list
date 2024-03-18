@@ -3,4 +3,4 @@
 - Supprimer des tâches, V
 - Modifier des tâches, V
 - Réoganiser des tâches,
-- Marquer une tâche comme terminé.
+- Marquer une tâche comme terminé. V

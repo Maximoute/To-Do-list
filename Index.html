@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="ToDo.js" defer></script>
+    <script src="Script.js" defer></script>
     <title>To Do List</title>
 </head>
 <body>
     <section class="add-task">
         <h2>Ajouter une tâche</h2>
-        <div id="button-submit-container">
-            <button type="submit" class="add-task-form" id="add-task-form">Ajouter une tâche</button>
-        <div id="add-task-form-container"></div>        
+            <button type="submit" class="button-add" id="button-add-task-modal">&#43;</button>
+
+            <div id="div-add-task-modal" class="modal">
+            </div>       
     </section>
     <section class="tasks">
             <h2>Vos tâches</h2>

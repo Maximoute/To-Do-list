@@ -1,3 +1,50 @@
 .text-line-through {
     text-decoration: line-through;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-add {
+    font-size: 24px; /* Taille du texte */
+    line-height: 1; /* Alignement vertical du texte */
+    width: 40px; /* Largeur du bouton */
+    height: 40px; /* Hauteur du bouton */
+    text-align: center; /* Centre le texte horizontalement */
+    border: none; /* Supprime la bordure du bouton */
+    background-color: #007bff; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    border-radius: 50%; /* Rend le bouton circulaire */
+    cursor: pointer; /* Change le curseur en main au survol */
+}
