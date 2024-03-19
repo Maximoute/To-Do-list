@@ -29,9 +29,7 @@ function openAddTaskModal () {
             `;
             add_task_form.appendChild(add_form);
 
-    document.getElementById('button-add-task-modal').addEventListener('click', function(){
         document.getElementById('div-add-task-modal').style.display ='block'
-    })
 
     document.querySelector('.close').addEventListener('click', function(){
         document.getElementById('div-add-task-modal').style.display ='none'

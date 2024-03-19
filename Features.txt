@@ -1,5 +1,5 @@
 - Ajouter des tâches, V
-- Lire des tâches,
+- Lire des tâches, V
 - Supprimer des tâches, V
 - Modifier des tâches, V
 - Réoganiser des tâches,
