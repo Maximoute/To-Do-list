@@ -1,6 +1,29 @@
-- Ajouter des tâches, V
-- Lire des tâches, V
-- Supprimer des tâches, V
-- Modifier des tâches, V
-- Réoganiser des tâches,
-- Marquer une tâche comme terminé. V
+Fonctionnalités de Base
+ - Création de tâches : Ajouter, éditer, et supprimer des tâches.
+ - Catégorisation des tâches : Organiser les tâches par catégories ou projets.
+ - Priorisation des tâches : Marquer les tâches avec des niveaux de priorité (faible, moyen, élevé).
+ - Échéances et rappels : Définir des dates d'échéance pour les tâches et recevoir des notifications.
+ - Marquage des tâches terminées : Cocher les tâches comme complétées et les archiver.
+
+Fonctionnalités Avancées
+ - Sous-tâches : Ajouter des sous-tâches pour décomposer les tâches en étapes plus petites.
+ - Répétition des tâches : Configurer des tâches récurrentes pour des routines quotidiennes, hebdomadaires, ou mensuelles.
+ - Partage et collaboration : Partager des listes de tâches avec d'autres utilisateurs et collaborer sur des projets communs.
+ - Commentaires sur les tâches : Permettre aux utilisateurs de commenter des tâches spécifiques pour clarifier des détails ou fournir des mises à jour.
+ - Pièces jointes : Attacher des fichiers ou des liens aux tâches pour centraliser les informations pertinentes.
+
+Intégrations et Automatisations
+ - Intégration avec des calendriers : Synchroniser les tâches avec des calendriers externes (Google Calendar, Outlook, etc.).
+ - Widgets et extensions : Offrir des widgets pour les navigateurs ou des intégrations avec d'autres applications (email, outils de gestion de projet).
+ - API pour développeurs : Permettre aux développeurs d'interagir avec l'application via une API.
+ 
+ Personnalisation et Accessibilité
+ - Thèmes personnalisables : Changer l'apparence de l'application avec des thèmes ou des modes sombre et clair.
+ - Filtres et tri des tâches : Filtrer et trier les tâches par date, priorité, projet, etc.
+ - Recherche de tâches : Rechercher des tâches par mots-clés.
+ - Paramètres de confidentialité : Contrôler qui peut voir ou éditer les tâches.
+ - Accessibilité : Assurer que l'application est accessible aux utilisateurs avec différents besoins, y compris la navigation au clavier et le support des lecteurs d'écran.
+
+Gamification et Motivation
+ - Système de récompenses : Introduire des points, des badges ou des niveaux pour motiver les utilisateurs à compléter leurs tâches.
+ - Rapports et statistiques : Fournir des rapports sur les performances des utilisateurs, comme le nombre de tâches complétées sur une période.
