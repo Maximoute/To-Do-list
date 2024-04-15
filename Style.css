@@ -1,3 +1,245 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    margin-top: -10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
+    background-color: #FCFFFD;
+}
+.main-content {
+    margin-left: 200px;
+    background-color: #eeeeee;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Header */
+.header {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #444544;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.header .button-container {
+    display: flex;
+    justify-content: flex-end; /* Aligner les boutons à droite */
+    
+}
+.header .filter-button,
+.header .button-add {
+    margin-left: 10px; /* Ajoute un espace à gauche de chaque bouton */
+    /* ... autres propriétés ... */
+}
+
+/* Si c'est le premier bouton qui doit avoir un espace après, utilisez :first-child ou :first-of-type */
+.header .filter-button:first-of-type {
+    margin-right: 10px; /* Ajoute un espace à droite du premier bouton */
+}
+.sidebar {
+    background-color: #929292;
+    color: #FCFFFD;
+    padding: 20px;
+    width: 250px;
+    height: 100vh;
+    box-sizing: border-box; /* Afin que padding ne change pas la largeur */
+    float: left;
+}
+.sidebar-right{
+    background-color: #929292;
+    color: #FCFFFD;
+    padding: 20px;
+    width: 250px;
+    height: 100vh;
+    box-sizing: border-box; /* Afin que padding ne change pas la largeur */
+    float: right;
+}
+
+/* Buttons */
+.button-add{
+    font-size: 30px; /* Taille de l'icône */
+    width: 40px; /* Largeur du bouton */
+    height: 40px; /* Hauteur du bouton */
+    line-height: 50px; /* Hauteur de ligne correspondant à la hauteur du bouton pour centrer verticalement le texte */
+    text-align: center; /* Centre le texte horizontalement */
+    border: none; /* Supprime la bordure du bouton */
+    background-color: #FCFFFD; /* Couleur de fond */
+    color: #4E4E50; /* Couleur du texte */
+    border-radius: 10%; /* Rend le bouton parfaitement circulaire */
+    cursor: pointer; /* Change le curseur en main au survol */
+    display: flex; /* Utilise flexbox pour centrer l'icône */
+    justify-content: center; /* Centre horizontalement l'icône */
+    align-items: center; /* Centre verticalement l'icône */
+    padding: 0; /* Supprime le padding pour éviter des décalages */
+}
+.button-filter{
+    font-size: 25px; /* Taille de l'icône */
+    width: 40px; /* Largeur du bouton */
+    height: 40px; /* Hauteur du bouton */
+    line-height: 50px; /* Hauteur de ligne correspondant à la hauteur du bouton pour centrer verticalement le texte */
+    text-align: center; /* Centre le texte horizontalement */
+    border: none; /* Supprime la bordure du bouton */
+    background-color: #FCFFFD; /* Couleur de fond */
+    color: #4E4E50; /* Couleur du texte */
+    border-radius: 10%; /* Rend le bouton parfaitement circulaire */
+    cursor: pointer; /* Change le curseur en main au survol */
+    display: flex; /* Utilise flexbox pour centrer l'icône */
+    justify-content: center; /* Centre horizontalement l'icône */
+    align-items: center; /* Centre verticalement l'icône */
+    padding: 0; /* Supprime le padding pour éviter des décalages */
+}
+/* Icons */
+.star {
+    color: #ffd700;
+    font-size: 20px;
+}
+.icon-task{
+    font-size: 20px; /* Taille de l'icône */
+    width: 30px; /* Largeur du bouton */
+    height: 30px; /* Hauteur du bouton */
+    line-height: 50px; /* Hauteur de ligne correspondant à la hauteur du bouton pour centrer verticalement le texte */
+    text-align: center; /* Centre le texte horizontalement */
+    border: none; /* Supprime la bordure du bouton */
+    background-color: #FCFFFD; /* Couleur de fond */
+    color: #4E4E50; /* Couleur du texte */
+    border-radius: 15%; /* Rend le bouton parfaitement circulaire */
+    cursor: pointer; /* Change le curseur en main au survol */
+    display: flex; /* Utilise flexbox pour centrer l'icône */
+    justify-content: center; /* Centre horizontalement l'icône */
+    align-items: center; /* Centre verticalement l'icône */
+    padding: 0; /* Supprime le padding pour éviter des décalages */
+}
+
+
+.icon-bar {
+    display: flex;
+    padding: 10px 0; /* Padding around the icons */
+    text-align: center;
+    overflow: hidden;
+  }
+  .icon-bar .icon-container {
+    position: relative; /* This is necessary for absolute positioning of the badge */
+    display: inline-block;
+    margin: 0 10px; /* Spacing between icons */
+    border: 2px solid #393e46;
+    border-radius: 5px; /* Rounded corners for icon background */
+    width: 30px; /* Width of the icon background */
+    height: 30px; /* Height of the icon background */
+    line-height: 35px; /* Center icon vertically */
+  }
+  .icon-container.no-border {
+    border: none; /* No border for this icon container */
+    background-color: transparent; /* No background */
+  }
+  
+  /* Specific hover effect for the non-bordered icon container */
+  .icon-container.no-border:hover {
+    background-color: transparent; /* Remain transparent on hover */
+  }
+  .icon-bar i {
+    font-size: 20px; /* Size of the icons */
+    color: #4E4E50; /* Icon color */
+  }
+  
+  .icon-bar .badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-30%, 25%); /* Center the badge over the top-right corner of the icon */
+    height: 15px; /* Fixed height */
+    width: 15px; /* Fixed width */
+    line-height: 15px; /* Align number in the badge vertically */
+    border-radius: 50%; /* Ensures the badge is round */
+    background-color: red;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  
+  /* Hover effect for icons */
+  .icon-bar .icon-container:hover {
+    background-color: #393e46;
+    color: #fff;
+     /* Change the color of icon background on hover */
+  }
+  .icon-bar .icon-container:hover i {
+    color: white; /* Change icon color on hover */
+  }
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul li {
+    padding: 8px 0;
+    background-color: #444544;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+ul li:hover {
+    background-color: #393e46;
+    cursor: pointer;
+}
+ul li:last-child {
+    margin-bottom: 0;
+}
+/* Spacer */
+.spacer {
+    width: 100%;
+    height: 50px;
+}
+
+
+  /* box */
+.box {
+    background: #D1D1D1;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.box h2 {
+    color: #FCFFFD;
+    margin: 0;
+}
+
+.box .filter-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.box ul {
+    list-style: none;
+    padding: 0px 10px 10px 10px;
+    margin: 0;
+}
+
+.box ul li {
+    background: #444544;
+    color: #FCFFFD;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.box ul li .icon {
+    font-size: 20px;
+}
+
 .text-line-through {
     text-decoration: line-through;
 }
@@ -34,17 +276,4 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
-
-.button-add {
-    font-size: 24px; /* Taille du texte */
-    line-height: 1; /* Alignement vertical du texte */
-    width: 40px; /* Largeur du bouton */
-    height: 40px; /* Hauteur du bouton */
-    text-align: center; /* Centre le texte horizontalement */
-    border: none; /* Supprime la bordure du bouton */
-    background-color: #007bff; /* Couleur de fond */
-    color: white; /* Couleur du texte */
-    border-radius: 50%; /* Rend le bouton circulaire */
-    cursor: pointer; /* Change le curseur en main au survol */
 }
