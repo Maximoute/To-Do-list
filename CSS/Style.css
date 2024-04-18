@@ -1,3 +1,4 @@
+/* Générale */
 body, html {
     height: 100%;
     margin: 0;
@@ -5,12 +6,14 @@ body, html {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
     background-color: #FCFFFD;
 }
+
 .main-content {
     margin-left: 200px;
     background-color: #eeeeee;
     height: 100vh;
     box-sizing: border-box;
 }
+
 
 /* Header */
 .header {
@@ -47,6 +50,7 @@ body, html {
     height: 100vh;
     box-sizing: border-box; /* Afin que padding ne change pas la largeur */
     float: left;
+    z-index: 9;
 }
 .sidebar-right{
     background-color: #929292;
@@ -56,6 +60,7 @@ body, html {
     height: 100vh;
     box-sizing: border-box; /* Afin que padding ne change pas la largeur */
     float: right;
+    z-index: 9;
 }
 
 /* Buttons */
@@ -90,6 +95,51 @@ body, html {
     justify-content: center; /* Centre horizontalement l'icône */
     align-items: center; /* Centre verticalement l'icône */
     padding: 0; /* Supprime le padding pour éviter des décalages */
+}
+.form-button {
+    padding: 10px 10px ;
+    margin: 10px 10px 10px 10px;
+    background-color: #4E4E50;
+    color: #FCFFFD;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-button:hover {
+    background-color: #6a6a6a;
+}
+
+.form-button:active {
+    background-color: #575757;
+}
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+.switch-button {
+    background-color: #f0f0f0; /* Couleur de fond légère */
+    color: #333; /* Couleur du texte */
+    border: none; /* Pas de bordure */
+    cursor: pointer; /* Curseur en forme de main pour indiquer l'interactivité */
+    padding: 8px 10px; /* Padding pour augmenter la taille du clic */
+    font-size: 14px; /* Taille de la police réduite pour distinguer du bouton principal */
+    margin-top: 0px;
+}
+
+.switch-button:hover {
+    background-color: #e1e1e1; /* Un peu plus sombre au survol */
 }
 /* Icons */
 .star {
@@ -176,10 +226,15 @@ ul {
 }
 ul li {
     padding: 8px 0;
+    padding-left: 10px;
     background-color: #444544;
     border-radius: 10px;
     margin-bottom: 10px;
     font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
 }
 ul li:hover {
     background-color: #393e46;
@@ -188,6 +243,7 @@ ul li:hover {
 ul li:last-child {
     margin-bottom: 0;
 }
+
 /* Spacer */
 .spacer {
     width: 100%;
@@ -196,11 +252,17 @@ ul li:last-child {
 
 
   /* box */
+.box-content{
+    border-radius: 15px;
+    width: 50%; /* Ajustez selon le besoin, 50% par exemple pour le centrer */
+    margin: auto; /* Centre horizontalement dans le modal */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optionnel : Ajoute ombre pour effet élévé */
+}
 .box {
     background: #D1D1D1;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 50%;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -239,41 +301,55 @@ ul li:last-child {
 .box ul li .icon {
     font-size: 20px;
 }
-
+.box form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    
+}
+.form-input::last-of-type{
+    margin-bottom: 0px;
+}
+.form-input{
+    width: calc(80% - 20px); /* prend toute la largeur du modal moins le padding */
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+}
+form-input:focus {
+    border-color: #4A90E2;
+    outline: none; /* Enlève l'outline par défaut de Firefox et autres navigateurs */
+}
+.button-group {
+    display: flex;
+    justify-content: space-around; /* Distribue l'espace autour des boutons */
+    width: 50%; /* Correspond à la largeur des inputs pour l'alignement */
+}
 .text-line-through {
     text-decoration: line-through;
 }
 
+/* modal */
 .modal {
     display: none;
-    position: fixed;
-    z-index: 1;
+
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent noir */
+    z-index: 20; /* S'assure que le fond est derrière le modal mais au-dessus du reste */
 }
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.modal-content{
+    border-radius: 15px;
+    width: 50%; /* Ajustez selon le besoin, 50% par exemple pour le centrer */
+    margin: auto; /* Centre horizontalement dans le modal */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Optionnel : Ajoute ombre pour effet élévé */
 }

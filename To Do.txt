@@ -1,1 +1,4 @@
 Rendre les fenetres draggable et etendable
+
+ajouter api google pour login et register
+

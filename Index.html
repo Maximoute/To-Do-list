@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="Script.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/Storage.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/Script.js" defer></script>
     <title>To Do List</title>
 </head>
 <body>
@@ -14,7 +16,7 @@
             <nav class="icon-bar">
                 <a class="icon-container active" href="#"><i class="fa fa-bell"></i><span class="badge">1</span></a>
                 <a class="icon-container" href="#"><i class="fa fa-share-alt"></i></a>
-                <a class="icon-container" href="#"><i class="fa fa-user"></i></a>
+                <a class="icon-container" href="#"><i class="fa fa-user" id="user-btn"></i></a>
                 <a class="icon-container no-border" href="#"><i class="fa fa-ellipsis-v"></i></a>
             </nav>
             <nav>
@@ -29,25 +31,28 @@
         </div>
     </section>
     <section class="middle">
+        <div id="div-auth-user-modal" class="modal"></div>
         <div class="spacer"></div>
-        <div class="box">
-            <div class="header">
-                <h2>Objectives</h2>
-                <div class="button-container">
-                    <button class="button-filter"><i class="fa fa-filter"></i></button>
-                    <button type="submit" class="button-add" id="button-add-objectives"><i class="fa fa-plus"></i></button>
+        <div class="box-content">
+            <div class="box">
+                <div class="header">
+                    <h2>Objectives</h2>
+                    <div class="button-container">
+                        <button class="button-filter"><i class="fa fa-filter"></i></button>
+                        <button type="submit" class="button-add" id="button-add-objectives"><i class="fa fa-plus"></i></button>
+                    </div>
                 </div>
+                <ul>
+                    <li>
+                        <span class="icon-task"><i class="fa fa-pen"></i></span> Sport
+                        <span class="star">&#9733;</span>
+                    </li>
+                    <li>
+                        <span class="icon-task"><i class="fa fa-pen"></i></span> Food
+                        <span class="star">&#9733;</span>
+                    </li>
+                </ul>
             </div>
-            <ul>
-                <li>
-                    <span class="icon-task"><i class="fa fa-pen"></i></span> Sport
-                    <span class="star">&#9733;</span>
-                </li>
-                <li>
-                    <span class="icon-task"><i class="fa fa-pen"></i></span> Food
-                    <span class="star">&#9733;</span>
-                </li>
-            </ul>
         </div>
     </section>
     <section class="add-task">

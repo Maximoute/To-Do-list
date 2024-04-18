@@ -8,9 +8,101 @@ document.addEventListener('DOMContentLoaded', (event) =>{
     document.getElementById('button-add-task-modal').addEventListener('click',function(e){
         e.preventDefault();
         openAddTaskModal();
-    })
+    });
+    document.getElementById('user-btn').addEventListener('click',function(e){
+        openModal('div-auth-user-modal', setupSignInModal);
+    });
 
 });
+function setupSignInModal(modal){
+    modal.innerHTML = `
+    <div class="spacer"></div>
+    <div class="modal-content">
+    <div class="box">
+        <div class="header">
+            <h2 id="form-title">Sign In</h2>
+            <span class="close-button">&times;</span>
+        </div>
+        <form id="login-form">
+        <button class="form-button switch-button" type="button" onclick="switchAuthMode('register')">Need an account? Register</button>
+            <input class="form-input" type="text" placeholder="Username" required>
+            <input class="form-input" type="password" placeholder="Password" required>
+            <div class="button-group">
+                <button class="form-button" type="submit">Login</button>
+                <button class="form-button" type="button" onclick="closeModal('${modal.id}')">Cancel</button>
+            </div>
+        </form>
+        <form id="register-form" style="display: none;">
+        <button class="form-button switch-button" type="button" onclick="switchAuthMode('login')">Login?</button>
+            <input class="form-input" id="username" type="text" placeholder="Username" required>
+            <input class="form-input" id="email" type="email" placeholder="Email" required>
+            <input class="form-input" id="password" type="password" placeholder="Password" required>
+            <input class="form-input" id="confirm-password" type="password" placeholder="Confirm password" required>
+            <div class="button-group">
+                <button class="form-button" type="submit">Register</button>
+                <button class="form-button" type="button" onclick="closeModal('${modal.id}')">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+    `
+    const login_form = modal.querySelector('#login-form');
+    login_form.addEventListener('submit', function(event){
+        event.preventDefault();
+
+        console.log ("login attemp with :", login_form.querySelector('input[type=text').value)
+        closeModal(modal.id);
+    })
+
+}
+
+function switchAuthMode(mode) {
+    const login_form = document.getElementById('login-form');
+    const register_form = document.getElementById('register-form')
+    const form_title = document.getElementById('form-title');
+
+    if(mode === 'login'){
+        login_form.style.display = 'flex';
+        register_form.style.display = 'none';
+        form_title.textContent = 'Sign In'
+    } else {
+        login_form.style.display = 'none';
+        register_form.style.display = 'flex';
+        form_title.textContent = 'Register'
+    }
+}
+
+function openModal(modalId, customizeFunction){
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+
+    modal.innerHTML = '';
+
+    if(typeof customizeFunction === 'function'){
+        customizeFunction(modal)
+    }
+
+    modal.style.display = 'block';
+
+    function closeModal(){
+        modal.style.display = 'none';
+    }
+
+    modal.querySelector('.close-button').addEventListener('click', closeModal);
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+}
+
+function closeModal(modalId){
+    const modal = document.getElementById(modalId);
+    if (modal) modal.style.display = 'none';
+
+}
+
+
 
 function openAddTaskModal () {
     const add_task_form = document.getElementById("div-add-task-modal");
